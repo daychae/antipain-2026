@@ -1,0 +1,418 @@
+:root {
+    /* Modern Color Palette */
+    --color-stop-start: #ff4b1f;
+    --color-stop-end: #ff9068;
+
+    --color-pain-start: #ff6b6b;
+    --color-pain-end: #ffa502;
+
+    --color-water-start: #00c6ff;
+    --color-water-end: #0072ff;
+
+    --color-suction-start: #00b4db;
+    --color-suction-end: #0083b0;
+
+    --color-rest-start: #11998e;
+    --color-rest-end: #38ef7d;
+
+    --color-secondary-start: #7474BF;
+    --color-secondary-end: #348AC7;
+
+    --color-ok-start: #56ab2f;
+    --color-ok-end: #a8e063;
+
+    --color-bg: #f3f6f9;
+    --color-text: #2d3436;
+
+    /* Shadows & Depth */
+    --shadow-soft: 0 10px 20px rgba(0, 0, 0, 0.08), 0 6px 6px rgba(0, 0, 0, 0.1);
+    --shadow-press: inset 0 2px 4px rgba(0, 0, 0, 0.15);
+
+    --font-main: 'Inter', sans-serif;
+    --radius-round: 24px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Glassmorphism Overlay */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    text-align: center;
+    transition: opacity 0.5s ease;
+}
+
+.overlay-content h1 {
+    margin-bottom: 0.5rem;
+    font-size: 2.2rem;
+    font-weight: 800;
+    background: linear-gradient(to right, #2d3436, #636e72);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.overlay-content p {
+    margin-bottom: 2.5rem;
+    color: #636e72;
+    font-weight: 500;
+}
+
+#start-btn {
+    padding: 1.2rem 3.5rem;
+    font-size: 1.3rem;
+    background: linear-gradient(135deg, var(--color-ok-start), var(--color-ok-end));
+    border: none;
+    border-radius: 50px;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(86, 171, 47, 0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+    letter-spacing: 1px;
+}
+
+#start-btn:active {
+    transform: scale(0.95);
+    box-shadow: 0 5px 15px rgba(86, 171, 47, 0.3);
+}
+
+/* Main Layout */
+.app-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 1.2rem;
+    height: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+button {
+    border: none;
+    border-radius: var(--radius-round);
+    font-family: var(--font-main);
+    font-weight: 700;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+    text-transform: uppercase;
+    box-shadow: var(--shadow-soft);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 1rem;
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.5px;
+}
+
+button span {
+    z-index: 1;
+}
+
+button svg {
+    z-index: 1;
+    filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.2));
+}
+
+button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0.1));
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+button:active {
+    transform: scale(0.96);
+    box-shadow: var(--shadow-press);
+}
+
+button:active::after {
+    opacity: 1;
+}
+
+/* Emergency Section */
+.emergency-section {
+    flex: 0 0 18%;
+    display: flex;
+}
+
+.btn-emergency {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--color-stop-start), var(--color-stop-end));
+    font-size: 2.2rem;
+    flex-direction: row;
+    gap: 1.5rem;
+    animation: gentle-pulse 3s infinite;
+}
+
+/* Grid Actions */
+.grid-section {
+    flex: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 1.2rem;
+}
+
+.btn-action {
+    font-size: 1.2rem;
+}
+
+.btn-pain {
+    background: linear-gradient(135deg, var(--color-pain-start), var(--color-pain-end));
+}
+
+.btn-water {
+    background: linear-gradient(135deg, var(--color-water-start), var(--color-water-end));
+}
+
+.btn-suction {
+    background: linear-gradient(135deg, var(--color-suction-start), var(--color-suction-end));
+}
+
+.btn-rest {
+    background: linear-gradient(135deg, var(--color-rest-start), var(--color-rest-end));
+}
+
+/* Secondary Actions */
+.secondary-section {
+    flex: 0 0 12%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+}
+
+.btn-secondary {
+    font-size: 1rem;
+    background: linear-gradient(135deg, #757f9a, #d7dde8);
+    color: #444;
+}
+
+.btn-secondary[data-action="ok"] {
+    background: linear-gradient(135deg, var(--color-ok-start), var(--color-ok-end));
+    color: white;
+}
+
+/* Input Section */
+.input-section {
+    flex: 0 0 8%;
+    display: flex;
+}
+
+.btn-keyboard {
+    width: 100%;
+    background: linear-gradient(135deg, #232526, #414345);
+    font-size: 1.1rem;
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 500;
+    transition: opacity 0.3s;
+}
+
+.modal.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.modal-content {
+    background: white;
+    padding: 2rem;
+    width: 90%;
+    max-width: 400px;
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    transform: translateY(0);
+    transition: transform 0.3s;
+}
+
+.modal.hidden .modal-content {
+    transform: translateY(50px);
+}
+
+#custom-text {
+    width: 100%;
+    height: 150px;
+    font-size: 1.3rem;
+    padding: 1.2rem;
+    border: 2px solid #eee;
+    border-radius: 16px;
+    font-family: var(--font-main);
+    resize: none;
+    outline: none;
+}
+
+#custom-text:focus {
+    border-color: var(--color-water-start);
+}
+
+.modal-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.modal-actions button {
+    flex: 1;
+    padding: 1rem;
+    font-size: 1.1rem;
+}
+
+#speak-custom {
+    background: linear-gradient(135deg, var(--color-water-start), var(--color-water-end));
+}
+
+.btn-cancel {
+    background: linear-gradient(135deg, #e0eafc, #cfdef3);
+    color: #555;
+}
+
+/* Animations */
+@keyframes gentle-pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 10px 20px rgba(255, 75, 31, 0.3);
+    }
+
+    50% {
+        transform: scale(1.02);
+        box-shadow: 0 15px 30px rgba(255, 75, 31, 0.5);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 10px 20px rgba(255, 75, 31, 0.3);
+    }
+}
+
+.flash-red {
+    animation: flash-screen-red 0.6s ease-out;
+}
+
+@keyframes flash-screen-red {
+    0% {
+        background-color: var(--color-bg);
+    }
+
+    30% {
+        background-color: rgba(255, 75, 31, 0.2);
+    }
+
+    100% {
+        background-color: var(--color-bg);
+    }
+}
+
+.flash-blue {
+    animation: flash-screen-blue 0.6s ease-out;
+}
+
+@keyframes flash-screen-blue {
+    0% {
+        background-color: var(--color-bg);
+    }
+
+    30% {
+        background-color: rgba(0, 198, 255, 0.2);
+    }
+
+    100% {
+        background-color: var(--color-bg);
+    }
+}
+
+/* Staggered Entry Animation */
+.app-container button {
+    opacity: 0;
+    animation: slide-up 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes slide-up {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.emergency-section button {
+    animation-delay: 0.1s;
+}
+
+.grid-section button:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.grid-section button:nth-child(2) {
+    animation-delay: 0.25s;
+}
+
+.grid-section button:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.grid-section button:nth-child(4) {
+    animation-delay: 0.35s;
+}
+
+.secondary-section button {
+    animation-delay: 0.4s;
+}
+
+.input-section button {
+    animation-delay: 0.5s;
+}

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Dental Comm App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+
+    <!-- Audio Context Overlay -->
+    <div id="start-overlay" class="overlay">
+        <div class="overlay-content">
+            <h1>Patient Communication Tool</h1>
+            <p>Tap to start session</p>
+            <button id="start-btn">START</button>
+        </div>
+    </div>
+
+    <!-- Main App Container -->
+    <main class="app-container" style="display: none;">
+        <!-- Emergency Section -->
+        <section class="emergency-section">
+            <button class="btn btn-emergency" data-action="stop" data-voice="Stop! Stop procedure.">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="15" y1="9" x2="9" y2="15"></line>
+                    <line x1="9" y1="9" x2="15" y2="15"></line>
+                </svg>
+                <span>STOP</span>
+            </button>
+        </section>
+
+        <!-- Quick Actions Grid -->
+        <section class="grid-section">
+            <button class="btn btn-action btn-pain" data-action="pain" data-voice="I feel pain.">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path>
+                    <line x1="12" y1="2" x2="12" y2="12"></line>
+                </svg>
+                <span>Pain</span>
+            </button>
+            <button class="btn btn-action btn-water" data-action="water" data-voice="Water please.">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                </svg>
+                <span>Water</span>
+            </button>
+            <button class="btn btn-action btn-suction" data-action="suction" data-voice="Suction please.">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path>
+                    <line x1="16" y1="8" x2="2" y2="22"></line>
+                    <line x1="17.5" y1="15" x2="9" y2="15"></line>
+                </svg>
+                <span>Suction</span>
+            </button>
+            <button class="btn btn-action btn-rest" data-action="rest" data-voice="I need a break.">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                <span>Break</span>
+            </button>
+        </section>
+
+        <!-- Questions/Other -->
+        <section class="secondary-section">
+            <button class="btn btn-secondary" data-action="how-long" data-voice="How much longer?">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                <span>How Long?</span>
+            </button>
+            <button class="btn btn-secondary" data-action="ok" data-voice="I am okay.">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+                <span>I'm OK</span>
+            </button>
+        </section>
+
+        <!-- Custom Input -->
+        <section class="input-section">
+            <button class="btn btn-keyboard" id="keyboard-toggle">Keyboard</button>
+        </section>
+    </main>
+
+    <!-- Custom Message Modal -->
+    <div id="custom-modal" class="modal hidden">
+        <div class="modal-content">
+            <textarea id="custom-text" placeholder="Type message..."></textarea>
+            <div class="modal-actions">
+                <button id="speak-custom">Speak</button>
+                <button id="close-modal" class="btn-cancel">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/app.js"></script>
+</body>
+
+</html>
