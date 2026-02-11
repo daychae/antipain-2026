@@ -1,4 +1,4 @@
-# Dental Comm App (치과 진료 소통 앱)
+# Dental Comm App (치과 진료 소통 앱) https://daychae.github.io/antipain-2026/
 
 치과 진료 중 말을 하기 어려운 환자가 의료진과 원활하게 소통할 수 있도록 돕는 웹 애플리케이션입니다. 터치 한 번으로 의사를 표현하고, 음성 합성(TTS) 기능을 통해 메시지를 전달합니다.
 
